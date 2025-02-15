@@ -6,21 +6,21 @@
   <title>Contest Tracker</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Updated Pastel Cosmic Colors with Dark Background */
+    /* Updated Colors with Dark Background */
     :root {
       --pastel-blue: #81ecec;
       --pastel-purple: #a29bfe;
       --pastel-pink: #fab1a0;
-      --background: #292829; /* New background color */
+      --background: #292829; /* Dark background */
       --text-light: #f5f6fa;
     }
-
+    
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
+    
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--background);
@@ -29,23 +29,22 @@
       overflow-x: hidden;
       position: relative;
     }
-
+    
     /* Cosmic Background */
     .cosmic-wrapper {
       position: fixed;
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      /* Using a subtle radial gradient based on the new background */
       background: radial-gradient(ellipse at bottom, #292829 0%, #1c1c1c 100%);
     }
-
-    /* Slower Animated Header */
+    
+    /* Header */
     header {
       text-align: center;
       padding: 3rem 0 1.5rem;
     }
-
+    
     .cyber-title {
       font-size: 3.5rem;
       background: linear-gradient(45deg, var(--pastel-purple), var(--pastel-blue));
@@ -56,20 +55,20 @@
       letter-spacing: 2px;
       animation: neonPulse 3s infinite alternate;
     }
-
+    
     @keyframes neonPulse {
       from { text-shadow: 0 0 5px var(--pastel-purple), 0 0 10px var(--pastel-blue); }
       to { text-shadow: 0 0 15px var(--pastel-purple), 0 0 20px var(--pastel-blue); }
     }
-
-    /* Pastel Tabs */
+    
+    /* Tabs */
     .tabs {
       display: flex;
       justify-content: center;
       gap: 1rem;
       margin: 1.5rem 0;
     }
-
+    
     .tab {
       cursor: pointer;
       padding: 0.8rem 1.5rem;
@@ -81,7 +80,7 @@
       transition: 0.4s ease;
       background: transparent;
     }
-
+    
     .tab::before {
       content: '';
       position: absolute;
@@ -92,19 +91,19 @@
       background: linear-gradient(90deg, transparent, rgba(129, 236, 236, 0.1), transparent);
       transition: 0.6s;
     }
-
+    
     .tab:hover::before {
       left: 100%;
     }
-
+    
     .tab.active {
       background: var(--pastel-blue);
       color: var(--background);
       font-weight: 600;
       box-shadow: 0 0 8px rgba(129, 236, 236, 0.3);
     }
-
-    /* Soft Holographic Container */
+    
+    /* Holographic Container */
     .container {
       max-width: 900px;
       margin: 1.5rem auto;
@@ -116,7 +115,7 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 20px rgba(129, 236, 236, 0.1);
     }
-
+    
     .container::before {
       content: '';
       position: absolute;
@@ -130,19 +129,19 @@
       background-size: 300%;
       border-radius: 1rem;
     }
-
+    
     @keyframes borderAnim {
       0% { background-position: 0 0; }
       50% { background-position: 300% 0; }
       100% { background-position: 0 0; }
     }
-
-    /* Soft Search Bar */
+    
+    /* Search Bar */
     .search-bar {
       position: relative;
       margin: 1.5rem 0;
     }
-
+    
     .search-bar input {
       width: 100%;
       padding: 0.8rem 1.2rem;
@@ -153,12 +152,12 @@
       color: var(--text-light);
       transition: 0.4s ease;
     }
-
+    
     .search-bar input:focus {
       outline: none;
       box-shadow: 0 0 10px rgba(162, 155, 254, 0.2);
     }
-
+    
     .search-bar::after {
       content: '⌕';
       position: absolute;
@@ -168,14 +167,14 @@
       color: var(--pastel-purple);
       font-size: 1.2rem;
     }
-
-    /* Soft Contest Cards */
+    
+    /* Contest Cards */
     .contest-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.2rem;
     }
-
+    
     .contest-item {
       background: rgba(255, 255, 255, 0.1);
       padding: 1rem;
@@ -185,12 +184,12 @@
       position: relative;
       overflow: hidden;
     }
-
+    
     .contest-item:hover {
       transform: translateY(-3px);
       box-shadow: 0 4px 15px rgba(129, 236, 236, 0.15);
     }
-
+    
     .contest-item::before {
       content: '';
       position: absolute;
@@ -201,11 +200,11 @@
       background: linear-gradient(90deg, transparent, rgba(129, 236, 236, 0.1), transparent);
       transition: 0.6s;
     }
-
+    
     .contest-item:hover::before {
       left: 100%;
     }
-
+    
     /* Checkbox Styling */
     .contest-item label {
       display: flex;
@@ -215,7 +214,7 @@
       width: 100%;
       font-size: 0.95rem;
     }
-
+    
     .custom-checkbox {
       width: 20px;
       height: 20px;
@@ -225,7 +224,7 @@
       transition: 0.4s ease;
       margin-left: 0.8rem;
     }
-
+    
     .custom-checkbox::after {
       content: '';
       position: absolute;
@@ -238,43 +237,59 @@
       top: 4px;
       transition: 0.4s ease;
     }
-
+    
     input[type="checkbox"] {
       display: none;
     }
-
+    
     input[type="checkbox"]:checked + .custom-checkbox {
       background: rgba(129, 236, 236, 0.3);
     }
-
+    
     input[type="checkbox"]:checked + .custom-checkbox::after {
       transform: rotate(-45deg) scale(1);
     }
-
-    /* Progress Bars */
+    
+    /* Circular Progress Visualization */
     .progress-container {
-      margin: 1.5rem 0;
       display: flex;
-      gap: 1.5rem;
       justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
       flex-wrap: wrap;
     }
-
+    .progress-circle-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .progress-circle {
+      width: 120px;
+      height: 120px;
+    }
+    .progress-bg {
+      fill: none;
+      stroke: rgba(255,255,255,0.2);
+      stroke-width: 10;
+    }
     .progress-bar {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-      width: 180px;
+      fill: none;
+      stroke: var(--pastel-blue);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 0.6s ease;
     }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--pastel-purple), var(--pastel-blue));
-      transition: 0.6s width ease;
+    /* Use a different color for biweekly */
+    #biweeklyCircle .progress-bar {
+      stroke: var(--pastel-purple);
     }
-
+    .progress-text {
+      font-size: 1rem;
+      fill: var(--text-light);
+    }
+    
     /* Particle Background - Softer & Slower */
     #particles-js {
       position: fixed;
@@ -287,39 +302,49 @@
 <body>
   <div id="particles-js"></div>
   <div class="cosmic-wrapper"></div>
-
+  
   <header>
     <h1 class="cyber-title">CONTEST TRACKER</h1>
   </header>
-
+  
   <div class="container">
     <!-- Tabs -->
     <div class="tabs">
       <div class="tab active" data-type="weekly">WEEKLY CONTESTS</div>
       <div class="tab" data-type="biweekly">BIWEEKLY CONTESTS</div>
     </div>
-
-    <!-- Progress Bars -->
+    
+    <!-- Circular Progress Visualization -->
     <div class="progress-container">
-      <div class="progress-bar">
-        <div class="progress-fill" id="weeklyProgress" style="width: 0%"></div>
+      <div class="progress-circle-container">
+        <svg class="progress-circle" id="weeklyCircle" width="120" height="120">
+          <circle class="progress-bg" cx="60" cy="60" r="50"></circle>
+          <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+          <text x="60" y="65" class="progress-text" text-anchor="middle">0%</text>
+        </svg>
+        <p style="text-align:center; margin-top: 0.5rem;">Weekly</p>
       </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="biweeklyProgress" style="width: 0%"></div>
+      <div class="progress-circle-container">
+        <svg class="progress-circle" id="biweeklyCircle" width="120" height="120">
+          <circle class="progress-bg" cx="60" cy="60" r="50"></circle>
+          <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+          <text x="60" y="65" class="progress-text" text-anchor="middle">0%</text>
+        </svg>
+        <p style="text-align:center; margin-top: 0.5rem;">Biweekly</p>
       </div>
     </div>
-
+    
     <!-- Search Bar -->
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="SEARCH CONTEST..." />
+      <input type="text" id="searchInput" placeholder="Search for Contest..." />
     </div>
-
+    
     <!-- Contest Cards -->
     <div class="contest-list" id="contestList">
       <!-- Contest items will be generated dynamically -->
     </div>
   </div>
-
+  
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     // Initialize particles.js with a softer, slower configuration
@@ -350,31 +375,29 @@
       },
       retina_detect: true
     });
-
+    
     // Contest data
     const contestData = {
       weekly: 436,
       biweekly: 149
     };
-
+    
     // Retrieve solved contest data from localStorage (or initialize)
     let solvedContests = JSON.parse(localStorage.getItem('solvedContests')) || {};
-
+    
     let currentType = 'weekly'; // default tab
-
+    
     // DOM elements
     const contestListEl = document.getElementById('contestList');
     const searchInput = document.getElementById('searchInput');
     const tabs = document.querySelectorAll('.tab');
-    const weeklyProgressEl = document.getElementById('weeklyProgress');
-    const biweeklyProgressEl = document.getElementById('biweeklyProgress');
-
+    
     // Save data to localStorage
     function saveData() {
       localStorage.setItem('solvedContests', JSON.stringify(solvedContests));
     }
-
-    // Update progress bars for each contest type
+    
+    // Update circular progress indicators
     function updateProgress() {
       let weeklySolved = 0;
       let biweeklySolved = 0;
@@ -386,64 +409,78 @@
       }
       const weeklyPercent = (weeklySolved / contestData.weekly) * 100;
       const biweeklyPercent = (biweeklySolved / contestData.biweekly) * 100;
-      weeklyProgressEl.style.width = weeklyPercent + '%';
-      biweeklyProgressEl.style.width = biweeklyPercent + '%';
+      
+      const radius = 50;
+      const circumference = 2 * Math.PI * radius;
+      
+      const weeklyOffset = circumference * (1 - weeklyPercent / 100);
+      const biweeklyOffset = circumference * (1 - biweeklyPercent / 100);
+      
+      const weeklyCircleBar = document.querySelector('#weeklyCircle .progress-bar');
+      const biweeklyCircleBar = document.querySelector('#biweeklyCircle .progress-bar');
+      weeklyCircleBar.style.strokeDashoffset = weeklyOffset;
+      biweeklyCircleBar.style.strokeDashoffset = biweeklyOffset;
+      
+      const weeklyText = document.querySelector('#weeklyCircle .progress-text');
+      const biweeklyText = document.querySelector('#biweeklyCircle .progress-text');
+      weeklyText.textContent = Math.round(weeklyPercent) + '%';
+      biweeklyText.textContent = Math.round(biweeklyPercent) + '%';
     }
-
+    
     // Generate contest items based on current type and search filter
     function generateContests() {
       contestListEl.innerHTML = '';
       const total = contestData[currentType];
       const filter = searchInput.value.toLowerCase();
-
+    
       for (let i = 1; i <= total; i++) {
         const contestName = (currentType === 'weekly'
           ? 'Weekly Contest ' : 'Biweekly Contest ') + i;
-
+    
         // Apply search filter
         if (filter && !contestName.toLowerCase().includes(filter)) {
           continue;
         }
-
+    
         // Create contest item card
         const contestItem = document.createElement('div');
         contestItem.classList.add('contest-item');
-
+    
         const label = document.createElement('label');
         label.setAttribute('for', contestName);
         label.appendChild(document.createTextNode(contestName));
-
+    
         // Create checkbox
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = contestName;
         checkbox.checked = solvedContests[contestName] || false;
-
+    
         // Create custom checkbox element
         const customCheckbox = document.createElement('span');
         customCheckbox.classList.add('custom-checkbox');
-
+    
         // When checkbox changes, update stored data and progress
         checkbox.addEventListener('change', function() {
           solvedContests[contestName] = checkbox.checked;
           saveData();
           updateProgress();
         });
-
+    
         // Append checkbox and custom indicator to label
         label.appendChild(checkbox);
         label.appendChild(customCheckbox);
-
+    
         contestItem.appendChild(label);
         contestListEl.appendChild(contestItem);
       }
-      // Update progress bars after generating list
+      // Update progress after generating list
       updateProgress();
     }
-
+    
     // Event listener for search input
     searchInput.addEventListener('input', generateContests);
-
+    
     // Tab switching logic
     tabs.forEach(tab => {
       tab.addEventListener('click', function() {
@@ -454,9 +491,10 @@
         generateContests();
       });
     });
-
+    
     // Initial generation of contests and progress update
     generateContests();
   </script>
 </body>
 </html>
+ 
